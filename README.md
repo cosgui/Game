@@ -1,1 +1,1 @@
-https://tetra-gram.github.io/Gam
+https://tetra-gram.github.io/Game
