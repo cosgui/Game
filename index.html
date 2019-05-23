@@ -3,41 +3,55 @@
 <html>
 <body>
 <script>
+    
+    
+    
 var working = true;
-   function incrementValue()
+function incrementValue()
 {
-   if (document.getElementById('number').value == 9) {
+    if (document.getElementById('number').value == 9) {
+    {
         document.getElementById('auto').style.visibility = "visible";
-   }
+    }
+    
     var value = parseInt(document.getElementById('number').value, 10);
     value++;
     document.getElementById('number').value = value;
 }
-   function buyAuto() {
-     if (document.getElementById('number').value > 1000){
-       working = false;
-       document.getElementById('auto').value = "Broken :(";
-     }
-     if (working == true){
-      console.log("Purchased")
-      var value = document.getElementById('number').value;
-      var cost = value * 0.5
-      document.getElementById('number').value = value - cost
-      var clicks;
-      var stopClicks = 10;
-      for (clicks = 0; clicks < stopClicks; clicks++){
-       document.getElementById('number').value = Math.round(value * 1.6)
-      }
-     }
+   
+function buyAuto() 
+{
+    if (document.getElementById('number').value > 1000)
+    {
+        working = false;
+        document.getElementById('auto').value = "Broken :(";
     }
+    if (working == true)
+    {
+        console.log("Purchased")
+        var value = document.getElementById('number').value;
+        var cost = value * 0.5
+        document.getElementById('number').value = value - cost
+        var clicks;
+        var stopClicks = 10;
+        for (clicks = 0; clicks < stopClicks; clicks++)
+        {
+            document.getElementById('number').value = Math.round(value * 1.6)
+        }
+     }
+}
 </script>
-   
-   
+
+    
+    
 <form>
    <input type="text" id="number" readonly="readonly" value="0"/>
    <input type="button" onclick="incrementValue()" value="Click Me" />
    <input style="visibility: hidden;" id="auto" type="button" onclick="buyAuto()" value="Big Clicker" />
 </form>
-   
+  
+    
+    
+
 </body>
 </html>
