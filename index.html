@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <body>
@@ -6,41 +5,43 @@
     
     
     
-var working = true;
 function incrementValue()
 {
-    if (document.getElementById('number').value == 9)
-    {
-        document.getElementById('auto').style.visibility = "visible";
-    }
     var value = parseInt(document.getElementById('number').value, 10);
+    if (document.getElementById('auto').style.visibility == "hidden")
+    {    
+        if (document.getElementById('number').value == 9)
+        {
+            value = 0
+            document.getElementById('auto').style.visibility = "visible";
+        }
+    }
     value++;
-    document.getElementById('number').value = value;
+    console.log(value)
+    document.getElementById('number').value = value;    
 }
    
 function buyAuto() 
 {
     if (document.getElementById('number').value > 1000)
     {
-        working = false;
         document.getElementById('auto').value = "Broken :(";
     }
-    if (working == true)
+    else
     {
-        console.log("Purchased")
+        <!--console.log("Purchased") -->
         var value = document.getElementById('number').value;
         var cost = value * 0.5
-        document.getElementById('number').value = value - cost
+        document.getElementById('number').value = value - cost;
         var clicks;
         var stopClicks = 10;
         for (clicks = 0; clicks < stopClicks; clicks++)
         {
-            document.getElementById('number').value = Math.round(value * 1.6)
+            document.getElementById('number').value = Math.round(value * 2)
         }
      }
 }
 </script>
-
     
     
 <form>
