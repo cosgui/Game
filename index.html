@@ -13,7 +13,11 @@
 }
    function buyAuto() {
       console.log("Purchased")
-       setTimeout(incrementValue(), 5000)
+      var clicks;
+      var stopClicks = 10;
+      for (clicks = 0; clicks < stopClicks; clicks++){
+       incrementValue()
+      }
     }
 </script>
    
