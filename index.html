@@ -9,11 +9,10 @@
 var working = true;
 function incrementValue()
 {
-    if (document.getElementById('number').value == 9) {
+    if (document.getElementById('number').value == 9)
     {
         document.getElementById('auto').style.visibility = "visible";
     }
-    
     var value = parseInt(document.getElementById('number').value, 10);
     value++;
     document.getElementById('number').value = value;
