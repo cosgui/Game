@@ -2,9 +2,6 @@
 <html>
 <body>
 <script>
-const sleep = (milliseconds) => {
-  return new Promise(resolve => setTimeout(resolve, milliseconds))
-}
    function incrementValue()
 {
    if (document.getElementById('number').value == 9) {
@@ -18,10 +15,10 @@ const sleep = (milliseconds) => {
       var value = parseInt(document.getElementById('number').value, 10);
       var autoPurchased = true;
       while (autoPurchased == true) {
-         sleep(1000).then(() => {
+        //Some way to sleep in JS...
             value++;
             document.getElementById('number').value = value;
-         })
+         }
        
       }
    }
