@@ -16,8 +16,8 @@ const sleep = (milliseconds) => {
 }
    function buyAuto() {
       var value = parseInt(document.getElementById('number').value, 10);
-      autoPurchased = True;
-      while (autoPurchased == True) {
+      var autoPurchased = true;
+      while (autoPurchased == true) {
          sleep(1000).then(() => {
             value++;
             document.getElementById('number').value = value;
