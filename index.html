@@ -7,7 +7,7 @@ var SilverUnlocked = false;
 function CheckBalance()
 {
   var value = parseInt(document.getElementById('bronze').value, 10);
-  
+
   if (value > 1000 && SilverUnlocked == false)
   {
     document.getElementById('silver').style.visibility = "visible";
@@ -19,7 +19,7 @@ function CheckBalance()
     var fullnum = Math.round(value/1000)
     var trailnum = value%1000
     console.log("value:" + value)
-    value = trailnum 
+    document.getElementById('bronze').value = trailnum;
     console.log(fullnum);
     console.log("trailnum: " + trailnum)
     console.log("value2:" + value)
