@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <style>
+      #MineSilver{
+        margin-left: 7px;
+      }
+    </style>
+  </head>
 <body>
 <script>
 
@@ -18,11 +25,7 @@ function CheckBalance()
   {
     var fullnum = Math.round(value/1000)
     var trailnum = value%1000
-    console.log("value:" + value)
     document.getElementById('bronze').value = trailnum;
-    console.log(fullnum);
-    console.log("trailnum: " + trailnum)
-    console.log("value2:" + value)
     SilverIncrement()
   }
 }
@@ -119,6 +122,13 @@ function BigMineSilver()
   <br>
   
   <input style="visibility: hidden;" type="text" id="silver" readonly="readonly" value="0"/> 
+  <small style="visibility: hidden;" id="silvertext">Silver</small>
+  <input style="visibility: hidden;" type="button" id="MineSilver" onclick="SilverIncrement()"value="Mine" />
+  <input style="visibility: hidden;" type="button" id="bigMineSilver" onclick="BigMineSilver()"value="Big Mine" />
+
+  <br>
+
+<input style="visibility: hidden;" type="text" id="silver" readonly="readonly" value="0"/> 
   <small style="visibility: hidden;" id="silvertext">Silver</small>
   <input style="visibility: hidden;" type="button" id="MineSilver" onclick="SilverIncrement()"value="Mine" />
   <input style="visibility: hidden;" type="button" id="bigMineSilver" onclick="BigMineSilver()"value="Big Mine" />
