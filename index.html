@@ -3,19 +3,21 @@
 <body>
 <script>
     
-var GoldUnlocked = false;  
-function CheckBalance(){
-   var value = parseInt(document.getElementById('silver').value, 10);
-   if (value > 1000 && GoldUnlocked == false){
-     document.getElementById('gold').style.visibility = "visible";
-     document.getElementById('goldtext').style.visibility = "visible";
-     document.getElementById('MineGold').style.visibility = "visible";
-   }
+var SilverUnlocked = false;  
+function CheckBalance()
+{
+  var value = parseInt(document.getElementById('bronze').value, 10);
+  if (value > 1000 && SilverUnlocked == false)
+  {
+    document.getElementById('silver').style.visibility = "visible";
+    document.getElementById('silvertext').style.visibility = "visible";
+    document.getElementById('MineSilver').style.visibility = "visible";
+  }
 }
     
-function SilverIncrement()
+function BronzeIncrement()
 {
-    var value = parseInt(document.getElementById('silver').value, 10);
+    var value = parseInt(document.getElementById('bronze').value, 10);
     if (document.getElementById('bigMine').style.visibility == "hidden")
     {    
         if (value == 9)
@@ -25,25 +27,61 @@ function SilverIncrement()
             document.getElementById('bigMine').style.visibility = "visible";
         }
     } 
-    if (document.getElementById('gold').style.visibility == "hidden")
+    if (document.getElementById('silver').style.visibility == "hidden")
     {
-        if (document.getElementById('silver').value == 1000)
+        if (document.getElementById('bronze').value == 1000)
         {
             value = 0
             console.log("part1")
-            document.getElementById('MineGold').style.visibility = "visible";
+            document.getElementById('MineSilver').style.visibility = "visible";
         }
     }
     value++;
-    document.getElementById('silver').value = value;
+    document.getElementById('bronze').value = value;
     CheckBalance();
 }
    
 function BigMine() 
 {
-    if (document.getElementById('silver').value > 850)
+    if (document.getElementById('bronze').value > 850)
     {
         document.getElementById('bigMine').value = "Broken :(";
+    }
+    else
+    {
+        var value = document.getElementById('bronze').value;
+        var cost = value * 0.5
+        document.getElementById('bronze').value = value - cost;
+        var clicks;
+        var stopClicks = 10;
+        for (clicks = 0; clicks < stopClicks; clicks++)
+        {
+            document.getElementById('bronze').value = Math.round(value * 2)
+        }
+     }
+  CheckBalance();
+}
+    
+function SilverIncrement()
+{
+    var value = parseInt(document.getElementById('silver').value, 10);
+    if (document.getElementById('bigMineSilver').style.visibility == "hidden")
+    {    
+        if (value == 9)
+        {
+            value = 0 
+            console.log("Second")
+            document.getElementById('bigMineSilver').style.visibility = "visible";
+        }
+    } 
+    value++;
+    document.getElementById('silver').value = value;
+}
+function BigMineSilver()
+{
+  if (document.getElementById('silver').value > 850)
+    {
+      document.getElementById('bigMineSilver').value = "Broken :(";
     }
     else
     {
@@ -54,68 +92,28 @@ function BigMine()
         var stopClicks = 10;
         for (clicks = 0; clicks < stopClicks; clicks++)
         {
-            document.getElementById('silver').value = Math.round(value * 2)
-        }
-     }
-  CheckBalance();
-}
-    
-function GoldIncrement()
-{
-    var value = parseInt(document.getElementById('gold').value, 10);
-    if (document.getElementById('bigMineGold').style.visibility == "hidden")
-    {    
-        if (value == 9)
-        {
-            value = 0 
-            console.log("Second")
-            document.getElementById('bigMineGold').style.visibility = "visible";
-        }
-    } 
-    value++;
-    document.getElementById('gold').value = value;
-}
-
-function BigMineGold(){
-  if (document.getElementById('gold').value > 850)
-    {
-        document.getElementById('bigMineGold').value = "Broken :(";
-    }
-    else
-    {
-        var value = document.getElementById('gold').value;
-        var cost = value * 0.5
-        document.getElementById('gold').value = value - cost;
-        var clicks;
-        var stopClicks = 10;
-        for (clicks = 0; clicks < stopClicks; clicks++)
-        {
-            document.getElementById('gold').value = Math.round(value * 2)
+          document.getElementById('silver').value = Math.round(value * 2)
         }
      }
 }
 </script>
     
-    <p id = "text" style="display:none">silver</p>
+<p id = "text" style="display:none">bronze</p>
         
 <form>
-   <input type="text" id="silver" readonly="readonly" value="0"/> 
-   <small>Silver</small>
-   <input type="button" onclick="SilverIncrement()" value="Mine" />
+   <input type="text" id="bronze" readonly="readonly" value="0"/> 
+   <small>Bronze</small>
+   <input type="button" onclick="BronzeIncrement()" value="Mine" />
    <input style="visibility: hidden;" type="button" id="bigMine" onclick="BigMine()" value="Big Mine" />
   
   <br>
   
-  <input style="visibility: hidden;" type="text" id="gold" readonly="readonly" value="0"/> 
-   <small style="visibility: hidden;" id="goldtext">Gold</small>
-   <input style="visibility: hidden;" type="button" id="MineGold" onclick="GoldIncrement()" value="Mine" />
-   <input style="visibility: hidden;" type="button" id="bigMineGold" onclick="BigMineGold()" value="Big Mine" />
+  <input style="visibility: hidden;" type="text" id="silver" readonly="readonly" value="0"/> 
+   <small style="visibility: hidden;" id="silvertext">Silver</small>
+   <input style="visibility: hidden;" type="button" id="MineSilver" onclick="SilverIncrement()"value="Mine" />
+   <input style="visibility: hidden;" type="button" id="bigMineSilver" onclick="BigMineSilver()"value="Big Mine" />
 </form>
   
-    
-    
 
 </body>
 </html>
-
-
