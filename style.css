@@ -1,0 +1,28 @@
+#container 
+      {
+        width: 100%;
+        margin: 0 0 0 0;
+        padding: 0;
+      }
+      #container #col1 
+      {
+        width: 33%;
+        float: left;
+      }
+      #container #col2outer
+      {
+        width: 66%;
+        float: right;
+        margin: 0;
+        padding: 0;
+      }
+      #col2outer #col2mid 
+      {
+        width: 33%;
+       float: left;
+      }
+      #col2outer #col2side 
+      {
+        width: 33%;
+       float: right;
+      }  
