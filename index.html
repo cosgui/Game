@@ -37,6 +37,30 @@
 
   
 <script>
+
+function BuyAutoMineBronze(){
+  if(document.getElementById('silver').value >= 100){
+    cost = 100
+    total = document.getElementById('silver').value - cost
+    document.getElementById('silver').value = total
+    AutoMineBronze()
+    minerCount = document.getElementById('AutoMinerCount').value
+    minerCount++;
+    document.getElementById('AutoMinerCount').value = minerCount
+  }
+  else
+  {
+    document.getElementById('output').value = "Not enough money";
+  }
+}
+function AutoMineBronze(toggled){
+  setInterval(function() { 
+    var value = parseInt(document.getElementById('bronze').value, 10);
+    value++;
+    document.getElementById('bronze').value = value;
+   }, 1000);
+}
+
 var SilverUnlocked = false;
 function CheckBalance()
 {
@@ -121,7 +145,8 @@ function BigMineSilver()
 {
   if (document.getElementById('silver').value > 850)
   {
-    document.getElementById('bigMineSilver').value = "Broken :(";
+    document.getElementById('AutoMineBronze').style.visibility = "visible";
+    document.getElementById('AutoMinerCount').style.visibility = "visible";
   }
   else
   {
@@ -151,6 +176,9 @@ function BigMineSilver()
   <small style="visibility: hidden;" id="silvertext">Silver</small>
   <input style="visibility: hidden;" type="button" id="MineSilver" onclick="SilverIncrement()"value="Mine" />
   <input style="visibility: hidden;" type="button" id="bigMineSilver" onclick="BigMineSilver()"value="Big Mine" />
+  <br>
+  <input style="visibility: hidden;" type="button" id="AutoMineBronze" onclick="BuyAutoMineBronze()"value="Auto Miner" />
+  <input style="visibility: hidden;" type="text" id="AutoMinerCount" readonly="readonly" value="0"/>
 
   <br>
 
