@@ -1,1 +1,1 @@
-https://tetra-gram.github.io/Game
+https://cosgui.github.io/Game/
