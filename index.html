@@ -1,168 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
-      #container 
-      {
-        width: 100%;
-        margin: 0 0 0 0;
-        padding: 0;
-      }
-      #container #col1 
-      {
-        width: 33%;
-        float: left;
-      }
-      #container #col2outer
-      {
-        width: 66%;
-        float: right;
-        margin: 0;
-        padding: 0;
-      }
-      #col2outer #col2mid 
-      {
-        width: 33%;
-       float: left;
-      }
-      #col2outer #col2side 
-      {
-        width: 33%;
-       float: right;
-      }  
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Game</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
-<body>
-  
-
-  
-<script>
-
-function BuyAutoMineBronze(){
-  if(document.getElementById('silver').value >= 100){
-    cost = 100
-    total = document.getElementById('silver').value - cost
-    document.getElementById('silver').value = total
-    AutoMineBronze()
-    minerCount = document.getElementById('AutoMinerCount').value
-    minerCount++;
-    document.getElementById('AutoMinerCount').value = minerCount
-  }
-  else
-  {
-    document.getElementById('output').value = "Not enough money";
-  }
-}
-function AutoMineBronze(toggled){
-  setInterval(function() { 
-    var value = parseInt(document.getElementById('bronze').value, 10);
-    value++;
-    document.getElementById('bronze').value = value;
-   }, 1000);
-}
-
-var SilverUnlocked = false;
-function CheckBalance()
-{
-  var value = parseInt(document.getElementById('bronze').value, 10);
-  if (value > 1000 && SilverUnlocked == false)
-  {
-    document.getElementById('silver').style.visibility = "visible";
-    document.getElementById('silvertext').style.visibility = "visible";
-    document.getElementById('MineSilver').style.visibility = "visible";
-    document.getElementById('output').value = "Silver Unlocked";
-  }
-  if (value >= 1000)
-  {
-    var fullnum = Math.round(value/1000)
-    var trailnum = value%1000
-    document.getElementById('bronze').value = trailnum;
-    SilverIncrement()
-  }
-}
-function BronzeIncrement()
-{
-  var value = parseInt(document.getElementById('bronze').value, 10);
-  if (document.getElementById('bigMine').style.visibility == "hidden")
-  {
-    if (value == 9)
-    {
-      value = 0
-      document.getElementById('bigMine').style.visibility = "visible";
-      document.getElementById('output').value = "Big Mine Unlocked";
-      
-    }
-  }
-  if (document.getElementById('silver').style.visibility == "hidden")
-  {
-    if (document.getElementById('bronze').value == 1000)
-    {
-      value = 0
-      document.getElementById('MineSilver').style.visibility = "visible";
-      SilverUnlocked = true
-    }
-  }
-  value++;
-  document.getElementById('bronze').value = value;
-  CheckBalance();
-}
-function BigMine()
-{
-  if (document.getElementById('bronze').value > 3000)
-  {
-    document.getElementById('bigMine').value = "Broken :(";
-  }
-  else
-  {
-    var value = document.getElementById('bronze').value;
-    var cost = value * 0.5
-    document.getElementById('bronze').value = value - cost;
-    var clicks;
-    var stopClicks = 10;
-    for (clicks = 0; clicks < stopClicks; clicks++)
-    {
-      document.getElementById('bronze').value = Math.round(value * 2)
-    }
-  }
-  CheckBalance();
-}
-function SilverIncrement()
-{
-  var value = parseInt(document.getElementById('silver').value, 10);
-  if (document.getElementById('bigMineSilver').style.visibility == "hidden")
-  {
-    if (value == 9)
-    {
-      value = 0
-      document.getElementById('bigMineSilver').style.visibility = "visible";
-      document.getElementById('output').value = "Big Mine Unlocked";
-    }
-  }
-  value++;
-  document.getElementById('silver').value = value;
-}
-function BigMineSilver()
-{
-  if (document.getElementById('silver').value > 850)
-  {
-    document.getElementById('AutoMineBronze').style.visibility = "visible";
-    document.getElementById('AutoMinerCount').style.visibility = "visible";
-  }
-  else
-  {
-    var value = document.getElementById('silver').value;
-    var cost = value * 0.5
-    document.getElementById('silver').value = value - cost;
-    var clicks;
-    var stopClicks = 10;
-    for (clicks = 0; clicks < stopClicks; clicks++)
-    {
-      document.getElementById('silver').value = Math.round(value * 2)
-    }
-  }
-}
-</script>
-<div id="container">  
+  <body>
+    <script src="script.js"></script>
+    <div id="container">  
 <div id="col1">
 <form>
   <input type="text" id="bronze" readonly="readonly" value="0"/> 
@@ -171,14 +17,22 @@ function BigMineSilver()
   <input style="visibility: hidden;" type="button" id="bigMine" onclick="BigMine()" value="Big Mine" />
   
   <br>
+
+  <input style="visibility: hidden;" type="button" id="AutoMineBronze" onclick="BuyAutoMineBronze()"value="Bronze Auto Miner" />
+  <input style="visibility: hidden;" type="text" id="AutoMinerCount" readonly="readonly" value="0"/>
+
+  <br>
   
   <input style="visibility: hidden;" type="text" id="silver" readonly="readonly" value="0"/> 
   <small style="visibility: hidden;" id="silvertext">Silver</small>
   <input style="visibility: hidden;" type="button" id="MineSilver" onclick="SilverIncrement()"value="Mine" />
   <input style="visibility: hidden;" type="button" id="bigMineSilver" onclick="BigMineSilver()"value="Big Mine" />
   <br>
-  <input style="visibility: hidden;" type="button" id="AutoMineBronze" onclick="BuyAutoMineBronze()"value="Auto Miner" />
-  <input style="visibility: hidden;" type="text" id="AutoMinerCount" readonly="readonly" value="0"/>
+
+<input style="visibility: hidden;" type="button" id="AutoMineSilver" onclick="BuyAutoMineSilver()"value="Silver Auto Miner" />
+  <input style="visibility: hidden;" type="text" id="AutoMinerCountSilver" readonly="readonly" value="0"/>
+
+  
 
   <br>
 
@@ -193,14 +47,14 @@ function BigMineSilver()
 
 
   <div id="col2side">
-  <p>3rd Column</p>
+  <h1>Info</h1>
+  <h3>Conversion Rate</h3>
+  <ul>
+    <li>1000 Bronze = 1 Silver</li>
+  </ul>
   </div>
 </div>
 
 </div>
-
-
-  
-
-</body>
+  </body>
 </html>
