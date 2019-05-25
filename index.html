@@ -2,24 +2,51 @@
 <html>
   <head>
     <style>
-      #MineSilver{
-        margin-left: 7px;
+      #container 
+      {
+        width: 100%;
+        margin: 0 0 0 0;
+        padding: 0;
       }
+      #container #col1 
+      {
+        width: 33%;
+        float: left;
+      }
+      #container #col2outer
+      {
+        width: 66%;
+        float: right;
+        margin: 0;
+        padding: 0;
+      }
+      #col2outer #col2mid 
+      {
+        width: 33%;
+       float: left;
+      }
+      #col2outer #col2side 
+      {
+        width: 33%;
+       float: right;
+      }  
     </style>
   </head>
 <body>
-<script>
+  
 
+  
+<script>
 var SilverUnlocked = false;
 function CheckBalance()
 {
   var value = parseInt(document.getElementById('bronze').value, 10);
-
   if (value > 1000 && SilverUnlocked == false)
   {
     document.getElementById('silver').style.visibility = "visible";
     document.getElementById('silvertext').style.visibility = "visible";
     document.getElementById('MineSilver').style.visibility = "visible";
+    document.getElementById('output').value = "Silver Unlocked";
   }
   if (value >= 1000)
   {
@@ -29,7 +56,6 @@ function CheckBalance()
     SilverIncrement()
   }
 }
-
 function BronzeIncrement()
 {
   var value = parseInt(document.getElementById('bronze').value, 10);
@@ -39,6 +65,8 @@ function BronzeIncrement()
     {
       value = 0
       document.getElementById('bigMine').style.visibility = "visible";
+      document.getElementById('output').value = "Big Mine Unlocked";
+      
     }
   }
   if (document.getElementById('silver').style.visibility == "hidden")
@@ -54,7 +82,6 @@ function BronzeIncrement()
   document.getElementById('bronze').value = value;
   CheckBalance();
 }
-
 function BigMine()
 {
   if (document.getElementById('bronze').value > 3000)
@@ -75,7 +102,6 @@ function BigMine()
   }
   CheckBalance();
 }
-
 function SilverIncrement()
 {
   var value = parseInt(document.getElementById('silver').value, 10);
@@ -85,6 +111,7 @@ function SilverIncrement()
     {
       value = 0
       document.getElementById('bigMineSilver').style.visibility = "visible";
+      document.getElementById('output').value = "Big Mine Unlocked";
     }
   }
   value++;
@@ -110,9 +137,8 @@ function BigMineSilver()
   }
 }
 </script>
-    
-<p id = "text" style="display:none">bronze</p>
-        
+<div id="container">  
+<div id="col1">
 <form>
   <input type="text" id="bronze" readonly="readonly" value="0"/> 
   <small>Bronze</small>
@@ -130,6 +156,22 @@ function BigMineSilver()
 
 
 </form>
+</div>
+
+<div id="col2outer">
+  <div id="col2mid">
+  <input style="visibility: visible;" type="text" id="output" readonly="readonly" value=""/> 
+  </div>
+
+
+  <div id="col2side">
+  <p>3rd Column</p>
+  </div>
+</div>
+
+</div>
+
+
   
 
 </body>
